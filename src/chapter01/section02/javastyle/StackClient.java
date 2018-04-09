@@ -5,23 +5,19 @@ public class StackClient {
 
 	public static void main(String args[]) {
 		System.out.println("Start Stack");
-		Stack example = new Stack(); 
+		int tempStackSize = 20;
+		Stack example = new Stack(tempStackSize); 
+		System.out.println("stackSize :" +example.getSize());
 		example.printStack();
-
-		String one = new String("1");
-		System.out.print("push: ");
-		if (example.push(one))
-			System.out.println(one);
-		else
-			System.out.println("Insert Failed");
-		example.printStack();
-
-		String two = new String("2");
-		System.out.print("push: ");
-		if (example.push(two))
-			System.out.println(two);
-		else
-			System.out.println("Insert Failed");
+		for (int i = 0; i <tempStackSize; i++) {
+			String one = new String(Integer.toString(i));
+			System.out.print("push: ");
+			if (example.push(one))
+				System.out.println(one);
+			else
+				System.out.println("Insert Failed");
+			
+		}
 		example.printStack();
 
 		Object result;
