@@ -2,6 +2,10 @@ package chapter01.section02.javastyle;
 
 public class Stack {
 	private int size;
+	public int getSize() {
+		return size;
+	}
+
 	private Object[] items; 
 	private int top = -1; 
 
@@ -11,7 +15,7 @@ public class Stack {
 	}
 	
 	public Stack(int size) {
-		size = 10;
+		this.size = size;
 		items = new Object[size];
 	}
 
