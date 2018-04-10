@@ -8,9 +8,7 @@ class PrintCartridge {
 		this.capacity = capacity;
 		this.reductionRate = reductionRate;
 	}
-	public double getReductionRate() {
-		return reductionRate;
-	}
+	
 	public boolean isAvailable() {
 		return capacity - reductionRate >= 0;
 	}
