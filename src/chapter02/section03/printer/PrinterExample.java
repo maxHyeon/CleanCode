@@ -1,5 +1,8 @@
 package chapter02.section03.printer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
  * 잉크젯, 도트, 레이저 프린터와 PDF 파일 생성기를 테스트하는 프로그램을 만들어보자. 
  * 잉크젯, 레이저 프린터는 매번 프린트할 때마다 각각 잉크와 토너를 소비하며 각각의 소비율은 서로 다르다.
@@ -78,7 +81,7 @@ class LaserPrinter extends Printer {
 	}
 }
 
-class PDFWriter {
+class PDFWriter implements Printable{
 	private String fileName; // PDF 문서 파일 이름
 
 	public PDFWriter(String fileName) {
@@ -98,17 +101,20 @@ class PDFWriter {
 
 public class PrinterExample {
 	public static void main(String[] args) {
-		InkjetPrinter iPrinter = new InkjetPrinter("101");
+		/*InkjetPrinter iPrinter = new InkjetPrinter("101");
 		DotPrinter dPrinter = new DotPrinter("102");
 		LaserPrinter lPrinter = new LaserPrinter("103");
-		PDFWriter pWriter = new PDFWriter("Test.pdf");
-
-		iPrinter.print("환영합니다. 프린터를 테스트중입니다.");
-		System.out.println("");
-		dPrinter.print("환영합니다. 프린터를 테스트중입니다.");
-		System.out.println("");
-		lPrinter.print("환영합니다. 프린터를 테스트중입니다.");
-		System.out.println("");
-		pWriter.print("환영합니다. 프린터를 테스트중입니다.");
+		PDFWriter pWriter = new PDFWriter("Test.pdf");*/
+		List<Printable> printerList =new ArrayList<Printable>();
+		printerList.add(new InkjetPrinter("101"));
+		printerList.add(new DotPrinter("102"));
+		printerList.add(new LaserPrinter("103"));
+		printerList.add(new PDFWriter("Test.pdf"));
+		
+		for (Printable printer : printerList) {
+			printer.print("welcome, test Printer");
+			System.out.println("");
+		}
+		
 	}
 }

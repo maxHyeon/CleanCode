@@ -1,6 +1,6 @@
 package chapter02.section03.printer;
 
-public abstract class Printer {
+public abstract class Printer implements Printable{
 	private String id;
 
 	public Printer(String id) {
@@ -14,7 +14,7 @@ public abstract class Printer {
 	public void testPrinting() {
 		print("testtest");
 	}
-	final void print(Object msg) {
+	public final void print(Object msg) {
 		if(isPrintable()) {
 			printing(msg);
 		}else
