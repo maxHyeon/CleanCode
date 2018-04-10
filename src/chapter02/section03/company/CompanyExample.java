@@ -8,50 +8,13 @@ package chapter02.section03.company;
  * 현재는 월급의 10%만큼 인상할 것이며, 관리자는 20만원을 더 올려준다. 
  * 앞으로 이 회사에 더 많은 직원이 채용될 것이며, 그들의 월급도 관리되어야 한다. 
 */
-class Employee {
-	static final int CLERK = 1;
-	static final int MANAGER = 2;
 
-	private String name;
-	private double salary;
-	private int type;
-	private Employee manager;
-
-	public Employee(int type, String name, double salary, Employee manager) {
-		this.type = type;
-		this.name = name;
-		this.salary = salary;
-		this.manager = manager;
-	}
-
-	public String getName() {
-		return this.name;
-	}
-
-	public double getSalary() {
-		return this.salary;
-	}
-
-	public Employee getManager() {
-		return manager;
-	}
-
-	public void manageES(double rate) {
-		if (type == CLERK) {
-			salary = salary + salary * (rate / 100);
-		} else if (type == MANAGER) {
-			salary = salary + salary * (rate / 100);
-			salary += 20; // 관리자는 20만원을 추가로 받는다.
-		}
-	}
-}
 
 public class CompanyExample {
 	public static void main(String[] args) {
-
-		Employee manager = new Employee(Employee.MANAGER, "홍길동", 200, null);
-		Employee mereClerk1 = new Employee(Employee.CLERK, "철수", 100, manager);
-		Employee mereClerk2 = new Employee(Employee.CLERK, "영희", 100, manager);
+		Manager manager = new Manager("홍길동", 200);
+		Employee mereClerk1 = new MereClerk("철수", 100, manager);
+		Employee mereClerk2 = new MereClerk("yung", 100, manager);
 
 		System.out.println("현재 월급입니다.");
 
@@ -63,18 +26,17 @@ public class CompanyExample {
 
 		System.out.println("올린 후의 월급입니다.");
 
-		mereClerk1.manageES(10);
+		mereClerk1.manageSalary(10);
 		System.out.println(mereClerk1.getName() + "의 현재 월급은 " + mereClerk1.getSalary() + " 만원 입니다.");
 
-		mereClerk2.manageES(10);
+		mereClerk2.manageSalary(10);
 		System.out.println(mereClerk2.getName() + "의 현재 월급은 " + mereClerk2.getSalary() + " 만원 입니다.");
 
-		manager.manageES(10);
+		manager.manageSalary(10);
 		System.out.println(manager.getName() + "의 현재 월급은 " + manager.getSalary() + " 만원 입니다.");
 
 		System.out.println("");
 		System.out.println(mereClerk1.getName() + "의 매니저는 " + mereClerk1.getManager().getName() + "이다.");
 		System.out.println(mereClerk2.getName() + "의 매니저는 " + mereClerk2.getManager().getName() + "이다.");
-
 	}
 }
