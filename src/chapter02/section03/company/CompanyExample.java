@@ -36,7 +36,7 @@ public class CompanyExample {
 		System.out.println(manager.getName() + "의 현재 월급은 " + manager.getSalary() + " 만원 입니다.");
 
 		System.out.println("");
-		System.out.println(mereClerk1.getName() + "의 매니저는 " + mereClerk1.getManager().getName() + "이다.");
-		System.out.println(mereClerk2.getName() + "의 매니저는 " + mereClerk2.getManager().getName() + "이다.");
+		System.out.println(mereClerk1.getName() + "의 매니저는 " + mereClerk1.getManagerName() + "이다.");
+		System.out.println(mereClerk2.getName() + "의 매니저는 " + mereClerk2.getManagerName() + "이다.");
 	}
 }

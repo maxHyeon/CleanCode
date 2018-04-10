@@ -6,8 +6,8 @@ public class MereClerk extends Employee {
 		super(name,salary);
 		this.manager = manager;
 	}
-    public Manager getManager() {
-    	return manager;
+    public String getManagerName() {
+    	return manager.getName();
     }
 	void manageSalary(double rate) {
 		salary = salary + salary * (rate / 100);
