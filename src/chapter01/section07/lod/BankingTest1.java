@@ -1,4 +1,4 @@
-package chapter01.section07.lod;
+/*package chapter01.section07.lod;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -63,4 +63,4 @@ public class BankingTest1 {
 		System.out.println("입금 후 잔액 : " + kim.deposit(10));
 		System.out.println("출금 후 잔액 : " + kim.withdrawal(20));
 	}
-}
+}*/
