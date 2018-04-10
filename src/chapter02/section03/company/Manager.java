@@ -3,8 +3,7 @@ package chapter02.section03.company;
 public class Manager extends Employee {
 
 	public Manager(String name, int salary) {
-		this.name = name;
-		this.salary = salary;
+		super(name,salary);
 	}
 
 	void manageSalary(double rate) {

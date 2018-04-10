@@ -4,7 +4,19 @@ public abstract class Employee {
 	String name;
 	double salary;
 	Manager manager;
-
+	
+	public Employee(String name, double salary, Manager manager) {
+		super();
+		this.name = name;
+		this.salary = salary;
+		this.manager = manager;
+	}
+	public Employee(String name, double salary) {
+		super();
+		this.name = name;
+		this.salary = salary;
+	}
+	
 	public String getName() {
 		return name;
 	}
