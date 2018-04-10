@@ -14,7 +14,13 @@ public abstract class Printer {
 	public void testPrinting() {
 		print("testtest");
 	}
-	public abstract void print(Object msg);
+	final void print(Object msg) {
+		if(isPrintable()) {
+			printing(msg);
+		}else
+			alert();
+	};
+	public abstract void printing(Object msg);
 	public abstract boolean isPrintable();
 	public abstract void alert();
 }
