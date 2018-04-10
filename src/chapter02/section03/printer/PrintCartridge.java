@@ -8,15 +8,13 @@ class PrintCartridge {
 		this.capacity = capacity;
 		this.reductionRate = reductionRate;
 	}
-	public double getCapacity() {
-		return capacity;
-	}
-	public void setCapacity(double capacity) {
-		this.capacity = capacity;
-	}
 	public double getReductionRate() {
 		return reductionRate;
 	}
-	
-
+	public boolean isAvailable() {
+		return capacity - reductionRate >= 0;
+	}
+	public void consume() {
+		capacity -= reductionRate;
+	}
 }
