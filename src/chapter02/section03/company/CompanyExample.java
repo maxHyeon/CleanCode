@@ -13,8 +13,8 @@ package chapter02.section03.company;
 public class CompanyExample {
 	public static void main(String[] args) {
 		Manager manager = new Manager("È«±æµ¿", 200);
-		Employee mereClerk1 = new MereClerk("Ã¶¼ö", 100, manager);
-		Employee mereClerk2 = new MereClerk("yung", 100, manager);
+		MereClerk mereClerk1 = new MereClerk("Ã¶¼ö", 100, manager);
+		MereClerk mereClerk2 = new MereClerk("yung", 100, manager);
 
 		System.out.println("ÇöÀç ¿ù±ÞÀÔ´Ï´Ù.");
 
