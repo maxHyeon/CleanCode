@@ -5,25 +5,19 @@ package chapter02.section03.printer;
  * 잉크젯, 레이저 프린터는 매번 프린트할 때마다 각각 잉크와 토너를 소비하며 각각의 소비율은 서로 다르다.
  * 사용하려는 프린터의 잉크나 토너의 용량이 다 떨어진 상태에서 프린트를 시도하면 경고 메시지를 보여준다.
  * 반면 도트 프린터는 반영구적으로 사용할 수 있다. 
- * PDF 파일 생성기는 지정된 이름의 PDF 파일을 생성하고 그 안에 문저 내용을 출력한다.
+ * PDF 파일 생성기는 지정된 이름의 PDF 파일을 생성하고 그 안에 문서 내용을 출력한다.
  * 먼저 잉크젯(InkjetPrinter), 도트(DotPrinter), 레이저 프린터(LaserPrinter) 클래스와 
  * PDF 생성기(PDFwWriter) 클래스를 만들자.
 */
 
-class InkjetPrinter {
+class InkjetPrinter extends Printer {
 	private double inkCapacity; // 잉크의 용량
 	private double inkReductionRate; // 한번 프린트할 때마다 줄어드는 잉크의 비율
 
-	private String ID;
-
 	public InkjetPrinter(String ID) {
-		this.ID = ID;
+		super(ID);
 		inkCapacity = 100;
 		inkReductionRate = 0.5;
-	}
-
-	public String getID() {
-		return ID;
 	}
 
 	public void print(Object msg) {
@@ -41,24 +35,14 @@ class InkjetPrinter {
 		System.out.println("잉크가 부족합니다. 빨간 램프를 깜박깜박~ ");
 	}
 
-	public boolean isPrintable() { // 한장을 찍을 분량이 남아있으면,
+	public boolean isPrintable() { // 한장2을 찍을 분량이 남아있으면,
 		return (inkCapacity - inkReductionRate) >= 0;
-	}
-
-	public void testPrinting() {
-		print("아아~ 프린트 테스트. 프린트 테스트");
 	}
 }
 
-class DotPrinter {
-	private String ID;
-
+class DotPrinter extends Printer {
 	public DotPrinter(String ID) {
-		this.ID = ID;
-	}
-
-	public String getID() {
-		return ID;
+		super(ID);
 	}
 
 	public void print(Object msg) {
@@ -72,26 +56,19 @@ class DotPrinter {
 	public boolean isPrintable() {
 		return true;
 	}
-
-	public void testPrinting() {
-		print("아아~ 프린트 테스트. 프린트 테스트");
+	
+	public void alert() {		
 	}
 }
 
-class LaserPrinter {
+class LaserPrinter extends Printer {
 	private double tonerCapacity; // 토너의 용량
 	private double tonerReductionRate; // 한번 프린트할 때마다 줄어드는 토너의 비율
 
-	private String ID;
-
 	public LaserPrinter(String ID) {
-		this.ID = ID;
+		super(ID);
 		tonerCapacity = 100;
 		tonerReductionRate = 0.2;
-	}
-
-	public String getID() {
-		return ID;
 	}
 
 	public void print(Object msg) {
@@ -111,10 +88,6 @@ class LaserPrinter {
 
 	public boolean isPrintable() { // 한장을 찍을 분량이 남아있으면,
 		return (tonerCapacity - tonerReductionRate) >= 0;
-	}
-
-	public void testPrinting() {
-		print("아아~ 프린트 테스트. 프린트 테스트");
 	}
 }
 
@@ -144,8 +117,11 @@ public class PrinterExample {
 		PDFWriter pWriter = new PDFWriter("Test.pdf");
 
 		iPrinter.print("환영합니다. 프린터를 테스트중입니다.");
+		System.out.println("");
 		dPrinter.print("환영합니다. 프린터를 테스트중입니다.");
+		System.out.println("");
 		lPrinter.print("환영합니다. 프린터를 테스트중입니다.");
+		System.out.println("");
 		pWriter.print("환영합니다. 프린터를 테스트중입니다.");
 	}
 }
