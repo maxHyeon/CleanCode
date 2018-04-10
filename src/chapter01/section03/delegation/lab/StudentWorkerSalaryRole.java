@@ -1,9 +1,9 @@
 package chapter01.section03.delegation.lab;
 
-public class StudentWorker extends Employee{
+public class StudentWorkerSalaryRole extends SalaryRole{
 
-	public StudentWorker(String name,double salary) {
-		super(name,salary);
+	public StudentWorkerSalaryRole(double salary) {
+		super(salary);
 	}
 	
 	public void manageSalary(double rate) {

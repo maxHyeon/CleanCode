@@ -1,17 +1,27 @@
 package chapter01.section03.delegation.lab;
 
-abstract class Employee {
+class Employee {
 	String name;
-	double salary;
-	public Employee(String name, double salary) {
+	SalaryRole salaryRole = null;
+	public Employee(String name) {
 		this.name = name;
-		this.salary = salary;
 	}
 	public String getName() {
-		return this.name;
+		return this.name;	
 	}
 	public double getSalary() {
-		return this.salary;
+		return salaryRole.getSalary();
 	}
-	public abstract void manageSalary(double rate);
+	public void manageSalary(double rate) {
+		// SalaryRole 객체에게 위임함.
+		salaryRole.manageSalary(rate);
+		}
+	public void setSalaryRole(SalaryRole salaryRole) {
+		this.salaryRole =salaryRole;
+	}
+	
+	public SalaryRole getSalaryRole() {
+		return salaryRole;
+	}
+	
 }
