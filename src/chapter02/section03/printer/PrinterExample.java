@@ -11,30 +11,27 @@ package chapter02.section03.printer;
 */
 
 class InkjetPrinter extends Printer {
-	private double inkCapacity; // 잉크의 용량
-	private double inkReductionRate; // 한번 프린트할 때마다 줄어드는 잉크의 비율
+
+	PrintCartridge cartridge;
 
 	public InkjetPrinter(String ID) {
 		super(ID);
-		inkCapacity = 100;
-		inkReductionRate = 0.5;
+		cartridge = new PrintCartridge(100, 0.5);
 	}
 
-	
 	public void alert() {
 		System.out.println("잉크가 부족합니다. 빨간 램프를 깜박깜박~ ");
 	}
 
 	public boolean isPrintable() { // 한장2을 찍을 분량이 남아있으면,
-		return (inkCapacity - inkReductionRate) >= 0;
+		return (cartridge.getCapacity() - cartridge.getReductionRate()) >= 0;
 	}
 
-	
 	public void printing(Object msg) {
 		System.out.println("*잉크젯 방식으로 프린트를 시작합니다.*");
 		System.out.println(msg.toString());
 		System.out.println("*잉크젯 방식으로 프린트를 종료합니다.*");
-		inkCapacity -= inkReductionRate;
+		cartridge.setCapacity(cartridge.getCapacity() - cartridge.getReductionRate());
 	}
 }
 
@@ -46,11 +43,10 @@ class DotPrinter extends Printer {
 	public boolean isPrintable() {
 		return true;
 	}
-	
-	public void alert() {		
+
+	public void alert() {
 	}
 
-	
 	public void printing(Object msg) {
 		System.out.println("*도트 방식으로 프린트를 시작합니다.*");
 		System.out.println(msg.toString());
@@ -59,22 +55,19 @@ class DotPrinter extends Printer {
 }
 
 class LaserPrinter extends Printer {
-	private double tonerCapacity; // 토너의 용량
-	private double tonerReductionRate; // 한번 프린트할 때마다 줄어드는 토너의 비율
+	PrintCartridge cartridge;
 
 	public LaserPrinter(String ID) {
 		super(ID);
-		tonerCapacity = 100;
-		tonerReductionRate = 0.2;
+		cartridge = new PrintCartridge(100, 0.2);
 	}
-
 
 	public void alert() {
 		System.out.println("토너가 부족합니다. 노란 램프를 깜박깜박~ ");
 	}
 
 	public boolean isPrintable() { // 한장을 찍을 분량이 남아있으면,
-		return (tonerCapacity - tonerReductionRate) >= 0;
+		return (cartridge.getCapacity() - cartridge.getReductionRate()) >= 0;
 	}
 
 	public void printing(Object msg) {
@@ -82,7 +75,7 @@ class LaserPrinter extends Printer {
 		System.out.println(msg.toString());
 		System.out.println("*레이저 방식으로 프린트를 종료합니다.*");
 
-		tonerCapacity -= tonerReductionRate;
+		cartridge.setCapacity(cartridge.getCapacity() - cartridge.getReductionRate());
 	}
 }
 
